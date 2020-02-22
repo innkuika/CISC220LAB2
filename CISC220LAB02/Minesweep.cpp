@@ -28,12 +28,25 @@ int main() {
 	getSize(size);
 	cout << "Size is " << size << endl;
 	int **mat = makeBoard(size);
-	printBoard(mat, size); //- for testing purposes
-//	placeBombs(mat,size);
-//	//printBoard(mat, size); - for testing purposes
-//	placeCounts(mat, size);
-//	//printBoard(mat, size); - for testing purposes
-//	char **visible = makeVisibleBoard(size);
+	//printBoard(mat, size);
+	//- for testing purposes
+	placeBombs(mat, size);
+	//printBoard(mat, size);
+	//- for testing purposes
+	placeCounts(mat, size);
+	//printBoard(mat, size);
+	//- for testing purposes
+	char **visible = makeVisibleBoard(size);
+
+
+//	printVisible(visible,size);
+//	chooseSquare(mat,visible,size);
+//	printVisible(visible,size);
+//	addBomb(visible, size, &bombsfound);
+//	printVisible(visible,size);
+//	removeBomb(visible, size, &bombsfound);
+//	printVisible(visible,size);
+//	checkForWin(mat, visible, size);
 
 	return 0;
 }
@@ -62,8 +75,8 @@ void printBoard(int **newBoard, int n) {
 		for (int j = 0; j < n; j++) {
 			if (newBoard[i][j] == 0) {
 				cout << "k" << "\t";
-			}else{
-				 cout << newBoard[i][j] << "\t";
+			} else {
+				cout << newBoard[i][j] << "\t";
 			}
 
 		}
@@ -72,8 +85,8 @@ void printBoard(int **newBoard, int n) {
 }
 
 int placeBombs(int **newBoard, int n) {
-	int a, b, numOfBombs = 0;
-	for (int numOfBombs = 0; numOfBombs < n; numOfBombs++) {
+	int a, b;
+	for (int numOfBombs = 0; numOfBombs < n + 1; numOfBombs++) {
 		a = rand() % n;
 		b = rand() % n;
 		if (newBoard[a][b] != 9) {
@@ -85,24 +98,44 @@ int placeBombs(int **newBoard, int n) {
 	return 0;
 }
 
-void placeCounts(int **newBoard, int n) {
-	int countBombs = 0, i, j;
+int countBombs(int **newBoard, int n, int i, int j) {
+	int countBombs = 0;
 	int a = i - 1, b = j - 1;
-	for (int i = 1; i < n; i++) {
-		for (int j = 1; i < n; j++) {
-			if (a > i - 1 || b > j - 1) {
-				continue;
-			}
-			if (a + 2 > n || b + 2 > n) {
-				b = b + 1;
+	for (int k = 0; k < n + 1; k++) {
+		if (a > n - 1 or b > n - 1 or a < 0 or b < 0) {
+			b++;
+			if (b > j + 1) {
 				a++;
+				b = j - 1;
 			}
-			if (newBoard[i][j] == 9) {
-				countBombs++;
+			continue;
+		}
+
+		if (newBoard[a][b] == 9) {
+			countBombs++;
+		}
+
+		b++;
+		if (b > j + 1) {
+			a++;
+			b = j - 1;
+		}
+
+	}
+
+	return countBombs;
+}
+void placeCounts(int **newBoard, int n) {
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+
+			if (newBoard[i][j] != 9) {
+				newBoard[i][j] = countBombs(newBoard, n, i, j);
 			}
+
 		}
 	}
-	newBoard[i][j] = countBombs;
 }
 
 int** makeVisibleBoard(int **newBoard, int n) {
