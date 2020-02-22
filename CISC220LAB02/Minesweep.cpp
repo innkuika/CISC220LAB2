@@ -15,11 +15,12 @@ using namespace std;
 void getSize(int&);
 int** makeBoard(int n);
 void printBoard(int **newBoard, int n);
-int checkBombNum(int n);
-int** makeVisibleBoard(int);
-void printVisible(int **newBoard, int n);
+
+void printVisible(char **newBoard, int n);
 int placeBombs(int **newBoard, int n);
 void placeCounts(int **newBoard, int n);
+char** makeVisibleBoard(int);
+void printVisible(char **newBoard, int n);
 
 int main() {
 	srand(time(NULL));
@@ -39,7 +40,8 @@ int main() {
 	char **visible = makeVisibleBoard(size);
 
 
-//	printVisible(visible,size);
+	printVisible(visible,size);
+
 //	chooseSquare(mat,visible,size);
 //	printVisible(visible,size);
 //	addBomb(visible, size, &bombsfound);
@@ -138,26 +140,24 @@ void placeCounts(int **newBoard, int n) {
 	}
 }
 
-int** makeVisibleBoard(int **newBoard, int n) {
-	newBoard = new int*[n];
+char** makeVisibleBoard(int n) {
+	char **visibleBoard = new char*[n];
 	for (int i = 0; i < n; i++) {
-		newBoard[i] = new int[n];
+		visibleBoard[i] = new char[n];
 	}
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			newBoard[i][j] = '-';
+			visibleBoard[i][j] = '-';
 		}
 	}
 
-	return newBoard;
+	return visibleBoard;
 }
-void printVisible(int **newBoard, int n) {
+void printVisible(char **newBoard, int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			if (newBoard[i][j] == 0) {
-				cout << '-';
-			}
+				cout << newBoard[i][j] << "\t" ;
 		}
 		cout << endl;
 	}
