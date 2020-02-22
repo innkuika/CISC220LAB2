@@ -20,7 +20,8 @@ void printVisible(char **newBoard, int n);
 int placeBombs(int **newBoard, int n);
 void placeCounts(int **newBoard, int n);
 char** makeVisibleBoard(int);
-void printVisible(char **newBoard, int n);
+void printVisible(char **visibleBoard, int n);
+bool chooseSquare(int **newBoard, char **visibleBoard, int size);
 
 int main() {
 	srand(time(NULL));
@@ -39,11 +40,10 @@ int main() {
 	//- for testing purposes
 	char **visible = makeVisibleBoard(size);
 
+	printVisible(visible, size);
 
+	chooseSquare(mat,visible,size);
 	printVisible(visible,size);
-
-//	chooseSquare(mat,visible,size);
-//	printVisible(visible,size);
 //	addBomb(visible, size, &bombsfound);
 //	printVisible(visible,size);
 //	removeBomb(visible, size, &bombsfound);
@@ -157,9 +157,32 @@ char** makeVisibleBoard(int n) {
 void printVisible(char **newBoard, int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-				cout << newBoard[i][j] << "\t" ;
+			cout << newBoard[i][j] << "\t";
 		}
 		cout << endl;
 	}
+}
+
+bool chooseSquare(int **newBoard, char **visibleBoard, int size) {
+	bool isNotBoom = true;
+	int x = -1, y = -1;
+
+	while (x < 0 or x >= size or y < 0 or y >= size) {
+		cout << "Choose square x (between 0 and " << size << ")" << endl;
+		cin >> x;
+		cout << "Choose square y (between 0 and " << size << ")" << endl;
+		cin >> y;
+
+		if (x >= 0 and x < size and y >= 0 and y < size) {
+			break;
+		}
+		cout << "Invalid square, try again:" << endl;
+	}
+	//*******************************************************
+		visibleBoard[x][y] = newBoard[x][y] + '0';
+	if(newBoard[x][y] == 9){
+		isNotBoom = false;
+	}
+	return isNotBoom;
 }
 
