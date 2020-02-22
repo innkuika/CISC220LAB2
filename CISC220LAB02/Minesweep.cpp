@@ -43,17 +43,11 @@ int main() {
 	char **visible = makeVisibleBoard(size);
 
 	printVisible(visible, size);
-
 	chooseSquare(mat, visible, size);
-	cout << bombsfound << endl;
 	printVisible(visible, size);
-
 	addBomb(visible, size, &bombsfound);
-	cout << bombsfound << endl;
 	printVisible(visible, size);
-
 	removeBomb(visible, size, &bombsfound);
-	cout << bombsfound << endl;
 	printVisible(visible, size);
 //	checkForWin(mat, visible, size);
 
