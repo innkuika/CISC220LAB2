@@ -24,6 +24,7 @@ void printVisible(char **visibleBoard, int n);
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
 bool addBomb(char **visibleBoard, int size, int *bombsfound);
 void removeBomb(char **visibleBoard, int size, int *bombsfound);
+bool checkForWin(int **newBoard,char **visibleBoard, int size);
 void removeVisible(char **visibleBoard, int size);
 void removeBoard(int **visibleBoard, int size);
 
@@ -51,7 +52,7 @@ int main() {
 	printVisible(visible, size);
 	removeBomb(visible, size, &bombsfound);
 	printVisible(visible, size);
-//	checkForWin(mat, visible, size);
+	checkForWin(mat, visible, size);
 
 
 	return 0;
@@ -233,6 +234,22 @@ void removeBomb(char **visibleBoard, int size, int *bombsfound) {
 		visibleBoard[x][y] = '-';
 		*bombsfound -= 1;
 	}
+}
+bool checkForWin(int **newBoard,char **visibleBoard, int size){
+
+	bool winGame = true;
+	for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				if(newBoard[i][j]== 9 && visibleBoard[i][j]== 'X'){
+					continue;
+			}else{
+				winGame = false;
+				break;
+			}
+			cout << endl;
+		}
+	}
+	return winGame;
 }
 
 void removeBoard(int **visibleBoard, int size){
