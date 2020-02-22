@@ -24,6 +24,8 @@ void printVisible(char **visibleBoard, int n);
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
 bool addBomb(char **visibleBoard, int size, int *bombsfound);
 void removeBomb(char **visibleBoard, int size, int *bombsfound);
+void removeVisible(char **visibleBoard, int size);
+void removeBoard(int **visibleBoard, int size);
 
 int main() {
 	srand(time(NULL));
@@ -50,6 +52,7 @@ int main() {
 	removeBomb(visible, size, &bombsfound);
 	printVisible(visible, size);
 //	checkForWin(mat, visible, size);
+
 
 	return 0;
 }
@@ -231,4 +234,21 @@ void removeBomb(char **visibleBoard, int size, int *bombsfound) {
 		*bombsfound -= 1;
 	}
 }
+
+void removeBoard(int **visibleBoard, int size){
+	for(int i = 0; i < size; i++){
+		delete []visibleBoard[i];
+
+	}
+}
+void removeVisible(char **visibleBoard, int size){
+	for(int i = 0; i < size; i++){
+		delete []visibleBoard[i];
+
+	}
+}
+
+
+
+
 
