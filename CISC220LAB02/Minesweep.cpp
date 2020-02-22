@@ -5,6 +5,8 @@
  *      Author: jessicawu, JinhengZhang
  *      TA's name: Lauren Olson
  */
+
+//change k's back to 0
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
@@ -16,12 +18,23 @@ void printBoard(int **newBoard, int n);
 int checkBombNum(int n);
 int** makeVisibleBoard(int);
 void printVisible(int **newBoard, int n);
+int placeBombs(int **newBoard, int n);
+void placeCounts(int **newBoard, int n);
 
-int main(){
-	srand (time(NULL));int size = 0;
+int main() {
+	srand(time(NULL));
+	int size = 0;
 	int bombsfound = 0;
 	getSize(size);
-	cout << size;
+	cout << "Size is " << size << endl;
+	int **mat = makeBoard(size);
+	printBoard(mat, size); //- for testing purposes
+//	placeBombs(mat,size);
+//	//printBoard(mat, size); - for testing purposes
+//	placeCounts(mat, size);
+//	//printBoard(mat, size); - for testing purposes
+//	char **visible = makeVisibleBoard(size);
+
 	return 0;
 }
 
@@ -30,8 +43,7 @@ void getSize(int &size) {
 }
 
 int** makeBoard(int n) {
-	int **newBoard = NULL;
-	newBoard = new int*[n];
+	int **newBoard = new int*[n];
 	for (int i = 0; i < n; i++) {
 		newBoard[i] = new int[n];
 	}
@@ -49,14 +61,17 @@ void printBoard(int **newBoard, int n) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (newBoard[i][j] == 0) {
-				cout << " ";
+				cout << "k" << "\t";
+			}else{
+				 cout << newBoard[i][j] << "\t";
 			}
+
 		}
 		cout << endl;
 	}
 }
 
-int placeBomb(int **newBoard, int n) {
+int placeBombs(int **newBoard, int n) {
 	int a, b, numOfBombs = 0;
 	for (int numOfBombs = 0; numOfBombs < n; numOfBombs++) {
 		a = rand() % n;
@@ -71,7 +86,7 @@ int placeBomb(int **newBoard, int n) {
 }
 
 void placeCounts(int **newBoard, int n) {
-	int countBombs = 0,i,j;
+	int countBombs = 0, i, j;
 	int a = i - 1, b = j - 1;
 	for (int i = 1; i < n; i++) {
 		for (int j = 1; i < n; j++) {
@@ -90,7 +105,7 @@ void placeCounts(int **newBoard, int n) {
 	newBoard[i][j] = countBombs;
 }
 
-int** makeVisibleBoard(int **newBoard,int n) {
+int** makeVisibleBoard(int **newBoard, int n) {
 	newBoard = new int*[n];
 	for (int i = 0; i < n; i++) {
 		newBoard[i] = new int[n];
@@ -105,13 +120,13 @@ int** makeVisibleBoard(int **newBoard,int n) {
 	return newBoard;
 }
 void printVisible(int **newBoard, int n) {
-    for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (newBoard[i][j] == 0) {
 				cout << '-';
 			}
 		}
-	cout << endl;
+		cout << endl;
 	}
 }
 
