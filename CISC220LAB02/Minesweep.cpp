@@ -15,6 +15,7 @@ int** makeBoard(int n);
 void printBoard(int **newBoard, int n);
 int checkBombNum(int n);
 int** makeVisibleBoard(int);
+void printVisible(int **newBoard, int n);
 
 int main(){
 	srand (time(NULL));int size = 0;
@@ -89,8 +90,7 @@ void placeCounts(int **newBoard, int n) {
 	newBoard[i][j] = countBombs;
 }
 
-int** makeVisibleBoard(int n) {
-	int **newBoard = NULL;
+int** makeVisibleBoard(int **newBoard,int n) {
 	newBoard = new int*[n];
 	for (int i = 0; i < n; i++) {
 		newBoard[i] = new int[n];
@@ -104,18 +104,14 @@ int** makeVisibleBoard(int n) {
 
 	return newBoard;
 }
-//
-//void printVisible(int **newBoard, int n) {
-//	for (int i = 0; i < n; i++) {
-//		for (int j = 0; j < n; j++) {
-//			if (newBoard[i][j] == 0) {
-//			cout <<;
-//		}
-//	}
-//	cout << endl;
-//}
-//
-//}
-//int chooseSquare(,,int n) {
-//
-//}
+void printVisible(int **newBoard, int n) {
+    for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (newBoard[i][j] == 0) {
+				cout << '-';
+			}
+		}
+	cout << endl;
+	}
+}
+
