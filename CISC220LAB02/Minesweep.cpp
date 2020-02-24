@@ -77,16 +77,20 @@ void printVisible(char **visibleBoard, int n);
  */
 
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
-/* Parameter: a pointer to the board matrix(int), a pointer to the visible matrix (char), and the size(int).
- *
- * Return: boolean. It will show false if the square chosen was a bomb.
- *
- * /It uses cout and cin to allow the user to choose a square (the x and the y position on the matrix
- *  respectively) and then sets the visible matrix at that square to be the value in the board matrix.
- */
 
 bool addBomb(char **visibleBoard, int size, int *bombsfound);
+/* Parameter: a pointer to the board matrix(int), a pointer to the visible matrix (char), and the size(int).
+ *
+ * Return: boolean. It will show true if it the number of "bombs" equal to (size+1)
+ *
+ * This function allows the user to choose a square, using cout and cin to get the x and y values, respectively, and then
+ * modifies that square in the visible matrix (marked as 9). Then it will increase the third
+ * parameter by 1 (the pointer to the number of bombs found so far). It checks if the number of bombs
+ * found is equal to the total number of bombs.
+ */
+
 void removeBomb(char **visibleBoard, int size, int *bombsfound);
+
 bool checkForWin(int **newBoard,char **visibleBoard, int size);
 void removeVisible(char **visibleBoard, int size);
 void removeBoard(int **visibleBoard, int size);
