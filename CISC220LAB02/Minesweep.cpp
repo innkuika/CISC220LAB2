@@ -13,11 +13,41 @@
 using namespace std;
 
 void getSize(int&);
-int** makeBoard(int n);
-void printBoard(int **newBoard, int n);
+/* Parameter: int. This int will take the input from the players.
+ *
+ * Return: None.
+ *
+ * This function uses call by reference to modify the integer input parameter to a random
+ * number between 7 and 20 (not including 20). This will be the size of your board.
+ */
 
-void printVisible(char **newBoard, int n);
+int** makeBoard(int n);
+/* Parameter: int n. It decides the length and width of the board (it's a square board).
+ *
+ * Return: a pointer to the matrix.
+ *
+ * The function is used to create an integer matrix (a 2-d array) on the heap, fill
+ * matrix with 0s (that's the number, not the letter 'O').
+ */
+
+void printBoard(int **newBoard, int n);
+/* Parameter: a pointer to a matrix (a 2-D function) of integers and an
+ *			integer for the size (the length and the width - it's a square).
+ *
+ * Return: None.
+ *
+ * It should print out the matrix, it will print a square matrix which consists of space
+ * instead of 0s as the players' view.
+ */
+
 int placeBombs(int **newBoard, int n);
+/* Parameter: a pointer to the 2-D matrix of integers (the board) and an integer(the size).
+ *
+ * Return: 0.
+ *
+ * This function uses to place size + 1 "bombs" randomly on the 2-D matrix.
+ * The "bomb" will be shown as number 9.
+ */
 void placeCounts(int **newBoard, int n);
 char** makeVisibleBoard(int);
 void printVisible(char **visibleBoard, int n);
@@ -27,6 +57,7 @@ void removeBomb(char **visibleBoard, int size, int *bombsfound);
 bool checkForWin(int **newBoard,char **visibleBoard, int size);
 void removeVisible(char **visibleBoard, int size);
 void removeBoard(int **visibleBoard, int size);
+
 
 int main() {
 	srand(time(NULL));
