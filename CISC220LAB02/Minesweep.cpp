@@ -98,6 +98,13 @@ bool addBomb(char **visibleBoard, int size, int *bombsfound);
  */
 
 void removeBomb(char **visibleBoard, int size, int *bombsfound);
+/* Parameter: a pointer to the board matrix(int), a pointer to the visible matrix (char), and the size(int).
+ *
+ * Return: None.
+ *
+ * this function is allowing the user to choose a square where they previously placed a bomb and unmark
+ * the square.
+ */
 
 bool checkForWin(int **newBoard,char **visibleBoard, int size);
 void removeVisible(char **visibleBoard, int size);
