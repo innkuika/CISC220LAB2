@@ -66,7 +66,16 @@ char** makeVisibleBoard(int);
  * This function will produce a 2-D matrix which is initialized to all '-'. It will used to make the view of
  * players. (Information of bombs will be hidden.)
  */
+
 void printVisible(char **visibleBoard, int n);
+/* Parameter: an integer for the size (the length and the width - it's a square).
+ *
+ * Return: None.
+ *
+ * This function will display a 2-D matrix which consists of '-'. (Information of bombs will be hidden.)
+ * (player's view)
+ */
+
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
 bool addBomb(char **visibleBoard, int size, int *bombsfound);
 void removeBomb(char **visibleBoard, int size, int *bombsfound);
