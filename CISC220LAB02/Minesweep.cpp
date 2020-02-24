@@ -49,6 +49,14 @@ int placeBombs(int **newBoard, int n);
  * The "bomb" will be shown as number 9.
  */
 void placeCounts(int **newBoard, int n);
+/* Parameter: a pointer to a matrix (a 2-D function) of integers and an
+ *			integer for the size (the length and the width - it's a square).
+ *
+ * Return: None.
+ *
+ * This function calculates the number of adjacent bombs for each square on the matrix and places those
+ * counts on the matrix.
+ */
 char** makeVisibleBoard(int);
 void printVisible(char **visibleBoard, int n);
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
