@@ -117,7 +117,12 @@ bool checkForWin(int **newBoard,char **visibleBoard, int size);
 
 void removeVisible(char **visibleBoard, int size);
 void removeBoard(int **visibleBoard, int size);
-
+/* Parameter: a pointer to the visible matrix (char), and the size(int).
+ *
+ * Return: None.
+ *
+ * This function is used to  removes the matrix from the heap.
+ */
 
 int main() {
 	srand(time(NULL));
