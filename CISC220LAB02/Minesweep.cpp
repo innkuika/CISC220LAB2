@@ -112,16 +112,23 @@ bool checkForWin(int **newBoard,char **visibleBoard, int size);
  * Return: boolean.
  *
  * It checks to make sure that each bomb in the board matrix has been marked as a bomb on the visible
- * matrix. It returns a boolean value - true if all the bombs have been found, and false otherwise
+ * matrix. It returns a boolean value - true if all the bombs have been found, and false otherwise.
  */
 
 void removeVisible(char **visibleBoard, int size);
+/* Parameter: a pointer to the visible matrix (char), and the size(int).
+ *
+ * Return: None.
+ *
+ * This function is used to removes the matrix from the heap.
+ */
+
 void removeBoard(int **visibleBoard, int size);
 /* Parameter: a pointer to the visible matrix (char), and the size(int).
  *
  * Return: None.
  *
- * This function is used to  removes the matrix from the heap.
+ * This function is used to removes the matrix from the heap.
  */
 
 int main() {
