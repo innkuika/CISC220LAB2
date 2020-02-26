@@ -43,7 +43,7 @@ void printBoard(int **newBoard, int n);
 int placeBombs(int **newBoard, int n);
 /* Parameter: a pointer to the 2-D matrix of integers (the board) and an integer(the size).
  *
- * Return: 0.
+ * Return: 0. (Showing the function executed successfully.
  *
  * This function uses to place size + 1 "bombs" randomly on the 2-D matrix.
  * The "bomb" will be shown as number 9.
@@ -61,7 +61,7 @@ void placeCounts(int **newBoard, int n);
 char** makeVisibleBoard(int);
 /* Parameter: an integer for the size (the length and the width - it's a square).
  *
- * Return: char.  A pointer to a matrix (a 2-D function) (player's view)
+ * Return: char 2d array.  A pointer to a 2d matrix (player's view)
  *
  * This function will produce a 2-D matrix which is initialized to all '-'. It will used to make the view of
  * players. (Information of bombs will be hidden.)
@@ -79,7 +79,7 @@ void printVisible(char **visibleBoard, int n);
 bool chooseSquare(int **newBoard, char **visibleBoard, int size);
 /* Parameter: a pointer to the board matrix(int), a pointer to the visible matrix (char), and the size(int).
  *
- * Return: boolean.
+ * Return: boolean. True if the player's choice was not a bomb.
  *
  * This function is used to cout and cin to allow the user to choose a square (the x and the y position on the matrix
  * It respectively) and then sets the visible matrix at that square to be the value in the board matrix.
