@@ -6,7 +6,6 @@
  *      TA's name: Lauren Olson
  */
 
-//change k's back to 0
 #include <iostream>
 #include <time.h>
 #include <stdlib.h>
