@@ -109,7 +109,7 @@ void removeBomb(char **visibleBoard, int size, int *bombsfound);
 bool checkForWin(int **newBoard,char **visibleBoard, int size);
 /* Parameter: a pointer to the board matrix(int), a pointer to the visible matrix (char), and the size(int).
  *
- * Return: boolean.
+ * Return: boolean. True if the player win the game
  *
  * It checks to make sure that each bomb in the board matrix has been marked as a bomb on the visible
  * matrix. It returns a boolean value - true if all the bombs have been found, and false otherwise.
