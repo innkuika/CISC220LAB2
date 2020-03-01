@@ -336,9 +336,9 @@ bool chooseSquare(int **newBoard, char **visibleBoard, int size) {
 	int x = -1, y = -1;
 
 	while (x < 0 or x >= size or y < 0 or y >= size) {
-		cout << "Choose square x (between 0 and " << size << ")" << endl;
+		cout << "Choose square x (between 0 and " << size-1 << ")" << endl;
 		cin >> x;
-		cout << "Choose square y (between 0 and " << size << ")" << endl;
+		cout << "Choose square y (between 0 and " << size-1 << ")" << endl;
 		cin >> y;
 
 		if (x >= 0 and x < size and y >= 0 and y < size) {
